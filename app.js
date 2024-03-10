@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const expbs = require('express-handlebars');
 const UserModel = require('./models/user');
 const restoModel = require('./models/restaurant');
-
+const bodyparser = require('body-parser');
 const DB_URL = "mongodb+srv://dbAdmin:dALTIIUAe1845fGW@restaurant-review.u6ovtf3.mongodb.net/ReviewWebsite?retryWrites=true&w=majority&appName=restaurant-review";
 
 mongoose.connect("mongodb://localhost:27017/ReviewWebsite");
@@ -49,7 +49,7 @@ app.get('/login', (req, res) => {
 // the login process and go to the main page
 app.post("/login", bodyparser.json(), async (req, res) => {
     try {
-        const user = await User.findOne({username: req.body.username, password: req.body.password});
+        const user = await UserModel.findOne({username: req.body.username, password: req.body.password});
         console.log(user);
         if (user) {  
             console.log('logged in successfully');
