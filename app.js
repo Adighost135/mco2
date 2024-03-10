@@ -5,6 +5,9 @@ const expbs = require('express-handlebars');
 const UserModel = require('./models/user');
 const restoModel = require('./models/restaurant');
 const bodyparser = require('body-parser');
+
+// change all 'clustername' to the name of you cluster with the database collection of ReviewWebsite
+// "mongodb+srv://dbAdmin:dALTIIUAe1845fGW@'clustername'.u6ovtf3.mongodb.net/ReviewWebsite?retryWrites=true&w=majority&appName='clustername'";
 const DB_URL = "mongodb+srv://dbAdmin:dALTIIUAe1845fGW@restaurant-review.u6ovtf3.mongodb.net/ReviewWebsite?retryWrites=true&w=majority&appName=restaurant-review";
 
 mongoose.connect("mongodb://localhost:27017/ReviewWebsite");
@@ -27,9 +30,8 @@ app.engine('handlebars', expbs.engine({
 app.set('view engine', 'handlebars');
 app.use(express.static('public'));
 
-app.listen(3000, () => {
-	console.log("listening to requests at port", 3000);
-});
+// async task
+mongoose.connect(DB_URL).then((result) => app.listen(3000)).catch((err) => console.log(err));
 
 console.log("listening at port 3000");
 
