@@ -1,31 +1,44 @@
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+const mongoose = require('mongoose');
+const databaseURL = "mongodb://localhost:27017/ReviewWebsite";
+const options = {useNewUrlParser: true,
+	useUnifiedTopology: true,
+	useFindAndModify: false };
 
-const userSchema = new Schema({
-    username: {
-        type: String,
-        required: true
-    },
-    password: {
-        type: String,
-        required: true
-    },
-    name: {
-        type: String,
-        required: true
-    },
-    description: {
-        type: String
-    }, 
-    userphoto: {
-        type: String,
-        required: true
-    },
-    isOwner: {
-        type: Boolean,
-        required: true
-    }
-}, { timestamps: true });
+mongoose.connect(databaseURL, options);
 
-const User = mongoose.model("User", userSchema);
-module.exports = User;
+const userSchema = new mongoose.Schema({
+		username: {
+			type: String,
+			required: true
+		},
+		password: {
+			type: String,
+			required: true
+		},
+		name: {
+			type: String,
+			required: true
+		},
+		description: String, 
+		userphoto: {
+			type: String,
+			required: true
+		},
+		isOwner: {
+			type: Boolean,
+			required: true
+		}
+}, {timestamps: true});
+
+const userModel = mongoose.model("User", userSchema, "users");
+
+exports.getCurrent = async function(id){
+	try{
+		const result = userModel.findById(id).exec();
+		return result;
+	}
+	catch (err){
+		console.error(err);
+	}
+}
+

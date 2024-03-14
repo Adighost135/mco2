@@ -1,33 +1,28 @@
 const express = require('express');
-const app = express();
-const mongoose = require('mongoose');
+const path = require('path');
 const expbs = require('express-handlebars');
-const UserModel = require('./models/user.js');
-const restoModel = require('./models/restaurant.js');
+const handlebars = require('handlebars');
+const bodyParser = require('body-parser');
 
-mongoose.connect("mongodb://localhost:27017/ReviewWebsite");
+const restaurants = require('./routes/restaurantRoutes');
+
+const app = express();
+const port = 3000;
 
 app.engine('handlebars', expbs.engine({
-	defaultLayout: "main",
-	helpers: {
-		log: function(varToCheck){
-			console.log(varToCheck);
-		}
-	}
-
+	defaultView: "main",
+	layoutsDir: path.join(__dirname, '/views/layouts'),
+	partialsDir: path.join(__dirname, '/views/partials')
 }));
+
 app.set('view engine', 'handlebars');
+
 app.use(express.static('public'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
 app.listen(3000, () => {
 	console.log("listening to requests at port", 3000);
 });
 
-console.log("listening at port 3000");
-
-app.get('/', async (req,res) => {
-	const trending = await restoModel.where().sort({rating: -1}).limit(3).lean();
-	let curruser = await UserModel.findById("65e833ffc7b2c99b7605f6ee");
-	res.render('index', {title: "Home page", h_user: curruser.getUsername, img_url: curruser.getImage, restaurants: trending});
-	console.log(trending);
-});
+app.use('/', restaurants);
