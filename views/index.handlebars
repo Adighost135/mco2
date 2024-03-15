@@ -18,12 +18,12 @@
         <div class = "restoSlides fade">
 
             <div class="desc-container">
-                <p id="restau-name">{{this.name}}</p>
-                <p id="restau-desc">{{this.desc}}</p>
+                <p id="restau-name"><a href="/viewRestaurant/{{this._id}}">{{this.name}}</a></p>
+                <p id="restau-desc">{{this.description}}</p>
             </div>
 
-            <div class = "picSize">
-            <a href = "#"><img src = {{this.images.[0]}} class = "resto_img"/></a>
+            <div class = "picSize"">
+            <a href="/viewRestaurant/{{this._id}}"><img src = {{this.images.[0]}} class = "resto_img"/></a>
             </div>
         </div>
     {{/each}}
