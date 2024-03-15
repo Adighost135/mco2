@@ -219,6 +219,7 @@ a{
 /* end of body */
 
 /* trending */
+
 .trending {
     height:100vh;
     background-color: #FFF8DC;
@@ -226,17 +227,43 @@ a{
     position: relative;
     height: 700px;
     padding: 20px;
+    padding-bottom: 50px;
+}
+
+#restau-name{
+    font-size: 45px;
 }
 
 .resto_img{
-    object-fit: contain;
-    max-height: 100%;
+    object-fit: cover;
+    max-height: 70%;
     height: 690px;
+    margin-left: 10%;
+    margin-top: 2%;
+    border-radius: 20px;
+    max-width: 80%;
+    max-height: 95%;
+    box-shadow: 0px 1px 16px 0px rgba(0,0,0,0.2);
 }
+
+.picSize{
+    height: 720px;
+    width: 720px;
+}
+
+.desc-container {
+    width: 380px;
+    margin-right: 120px;
+}
+  
+
 
 .restoSlides { 
     object-fit: contain;
     display: none;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+    align-items: center;
     height: 100%;
     max-width: 100%;
 }
@@ -275,7 +302,7 @@ a{
   padding: 8px 12px;
   position: absolute;
   bottom: 8px;
-  width: 100%;
+  width: 95%;
   text-align: center;
   background-color: rgb(50,50,50,0.5)
 }
@@ -370,10 +397,6 @@ a{
     padding-bottom: 10px;
 }
 
-.user_input {
-}
-
-
 #login {
     font-size: 20px;
 }
@@ -382,3 +405,26 @@ a{
     font-size: 20px;
     color:rgba(97, 28, 106, 0.827);
 }
+
+.footer {
+    bottom: 0;
+    width: 100%;
+    background-color: #F9F6EE;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    z-index: 3;
+    height: 250px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.contact {
+    margin-left:10%;
+    margin-top: 3%;
+}
+
+.project {
+    margin-right:10%;
+    margin-top: 3%;
+}
+
