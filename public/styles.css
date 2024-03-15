@@ -185,6 +185,7 @@ body {
     display:flex;
     flex-direction: row;
     justify-content: space-around;
+    z-index: 2;
 }
 
 a{
@@ -206,7 +207,7 @@ a{
 
 .home h1{
     font-weight: lighter;
-    font-size:75px
+    font-size:75px;
 }
 #the {
     color:#0070b9;
@@ -236,7 +237,7 @@ a{
 .restoSlides { 
     object-fit: contain;
     display: none;
-    height: 100%
+    height: 100%;
     max-width: 100%;
 }
 
@@ -287,4 +288,97 @@ a{
 @keyframes fade{
     from {opacity: 0.4}
     to {opacity: 1}
+}
+
+.login-content{
+	background-color: #e7e0d3c0;
+    margin: 10%  auto 30%;
+    min-width: 430px;
+	width: 454px;
+    margin-top: 18%;
+    border-radius: 60px;
+    height: 255px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.loginbody{
+	background-color: #F9F6EE;
+    height: 100%;
+    width: 100%;
+    padding: 10px 0px 10px 10px;
+}
+
+#login-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.inputuser {
+	font-size: 16px;
+	padding: 5px 10px;
+	width: 100%;
+	outline: none;
+	background: #FFFFFF;
+	color: #000000;
+	border: 1px solid #C4D1EB;
+	border-radius: 20px;
+	box-shadow: 3px 3px 2px 0px #E2E2E2;
+	transition: .3s ease;
+}
+
+.inputuser:focus {
+	background: #F2F2F2;
+	border: 1px solid #5A7EC7;
+	border-radius: 10px;
+}
+
+.inputuser::placeholder {
+	color: #DDDDDD;
+}
+
+.inputpass {
+	font-size: 16px;
+	padding: 5px 10px;
+	width: 100%;
+	outline: none;
+	background: #FFFFFF;
+	color: #000000;
+	border: 1px solid #C4D1EB;
+	border-radius: 20px;
+	box-shadow: 3px 3px 2px 0px #E2E2E2;
+	transition: .3s ease;
+}
+
+.inputpass:focus {
+	background: #F2F2F2;
+	border: 1px solid #5A7EC7;
+	border-radius: 10px;
+}
+
+.inputpass::placeholder {
+	color: #DDDDDD;
+}
+
+.pass_input {
+    margin-top: 10px;
+    padding-bottom: 10px;
+}
+
+.user_input {
+}
+
+
+#login {
+    font-size: 20px;
+}
+
+#register {
+    font-size: 20px;
+    color:rgba(97, 28, 106, 0.827);
 }
