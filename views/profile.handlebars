@@ -1,7 +1,7 @@
 <div class="viewprofile">
     <img src="{{ppic}}" id="viewpic">
     <div class="profiledetails">
-        <p>{{h_user}}</p>
+        <p>{{v_user}}</p>
         <p>Reviews: <span class="bold">{{numReviews}}</span></p>
     </div>
 
@@ -10,22 +10,22 @@
         <p id="vpAbout">About</p>
     </div>
 </div>
-
+<div class="profilecontent" style="height: {{dynamicHeight}}px"">
 {{#if blogs.length}}
     {{#each blogs}}
-        {{! Calculate dynamicHeight in the server-side JavaScript and pass it to the template }}
         <div class="vpblog">
             <section>
                 <img src="{{../ppic}}" class="blogpfp">
-                {{log h_user}}
-                <p>{{../fullname}}<span class="greyusername"> @{{../h_user}}</span></p>
+                {{log ../v_user}}
+                {{log ../fullname}}
+                <p>{{../fullname}}<span class="greyusername"> @{{../v_user}}</span></p>
             </section>
-            <h3 class="title">{{this.restaurant}}</h3>
-            <p class="snippet">{{this.snippet}}</p>
+            <h3 class="title">{{this.title}}</h3>
+            <p class="snippet">{{this.content}}</p>
         </div>
     {{/each}}
 {{else}}
     <p>There are no blogs to display</p>
 {{/if}}
-
+</div>
 </div>
